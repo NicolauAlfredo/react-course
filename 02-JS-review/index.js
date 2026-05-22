@@ -1,8 +1,9 @@
 import { getBook } from "./service/bookService.js";
 import { getYear } from "./utils/dateUtils.js";
+import { getTotalReviewCount } from "./utils/bookUtils.js";
 
 // Get book with id
-const bookId = 2;
+const bookId = 3;
 const book = getBook(bookId);
 
 // Object destructuring
@@ -113,4 +114,8 @@ Pages: ${updatedBook.pages}
   // It keeps valid falsy values like 0 and ""
   const count = book.reviews.librarything.reviewsCount ?? "NO DATA";
   console.log(count);
+
+  // Optional Chaining
+  console.log("======== Optional Chaining ========");
+  console.log(getTotalReviewCount(book));
 }
