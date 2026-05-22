@@ -15,6 +15,7 @@ console.log("Titles:", titles);
 const essentialData = books.map((book) => ({
   title: book.title,
   author: book.author,
+  reviewCount: getTotalReviewCount(book),
 }));
 
 console.log(JSON.stringify(essentialData, null, 2));
