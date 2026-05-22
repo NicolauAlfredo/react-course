@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello React!</title>
+  </head>
+
+  <body>
+    <!-- Root element where the React app will be mounted -->
+    <div id="root"></div>
+
+    <!-- React core library -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+
+    <!-- ReactDOM library used to render React components into the DOM -->
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- React application -->
+    <script>
+      // Main React component
+      function App() {
+        // State to store the current time
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString());
+
+        // Run once when the component mounts
+        React.useEffect(function () {
+          // Update the time every second
+          const intervalId = setInterval(() => {
+            setTime(new Date().toLocaleTimeString());
+          }, 1000);
+
+          // Cleanup function to prevent memory leaks
+          return function () {
+            clearInterval(intervalId);
+          };
+        }, []);
+
+        // Create and return a React element
+        return React.createElement("header", null, `Hello React! It's ${time}`);
+      }
+
+      // Create the React root
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+
+      // Render the App component into the root element
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>
