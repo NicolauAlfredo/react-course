@@ -196,10 +196,14 @@ if (!book) {
   };
   console.log("======== New BOOK ======== ");
   console.log(
-    `Title: ${title} \Publication Date: ${updatedBook.moviePublicationDate} \nPages: ${updatedBook.pages}`,
+    `Title: ${title} \nPublication Date: ${updatedBook.moviePublicationDate} \nPages: ${updatedBook.pages}`,
   );
 
   console.log("======== SUMMARY ======== ");
-  const summary = `${title}, is a ${pages}-page long book, was written by ${author}, and published in ${publicationDate.split("-")[0]}`;
+  const summary = `${title}, is a ${pages}-page long book, was written by ${author}, and published in ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation ? "" : "not "}been adapted as a movie`;
   console.log(summary);
+
+  // TErnaries Instead of/if/else Statements
+  const pagesRange = pages > 1000 ? "Over a thousand" : "less than 1000";
+  console.log(`The book has ${pagesRange} pages`);
 }
