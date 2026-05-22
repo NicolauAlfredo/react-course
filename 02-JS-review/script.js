@@ -198,4 +198,8 @@ if (!book) {
   console.log(
     `Title: ${title} \Publication Date: ${updatedBook.moviePublicationDate} \nPages: ${updatedBook.pages}`,
   );
+
+  console.log("======== SUMMARY ======== ");
+  const summary = `${title}, is a ${pages}-page long book, was written by ${author}, and published in ${publicationDate.split("-")[0]}`;
+  console.log(summary);
 }
