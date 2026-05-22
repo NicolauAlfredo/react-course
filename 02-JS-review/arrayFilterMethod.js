@@ -1,4 +1,4 @@
-import { getBooks } from "./service/bookService.js";
+import { getBooks } from "./services/bookService.js";
 
 const books = getBooks();
 
