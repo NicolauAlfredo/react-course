@@ -2,7 +2,7 @@ import { getBook } from "./service/bookService.js";
 import { getYear } from "./utils/dateUtils.js";
 
 // Get book with id
-const bookId = 1;
+const bookId = 2;
 const book = getBook(bookId);
 
 // Object destructuring
@@ -66,8 +66,51 @@ Pages: ${updatedBook.pages}
 
   console.log(summary);
 
-  // Ternaries instead of if/else statements
+  // Ternary operator
+  // Used when we need to choose between two values based on a condition
   const pagesRange = pages > 1000 ? "Over a thousand" : "Less than 1000";
 
   console.log(`The book has ${pagesRange} pages`);
+
+  // Short-circuiting with logical operators: &&, || and ??
+  console.log("======== AND OPERATOR ========");
+
+  // && returns the second value if the first one is truthy
+  console.log(true && "Some string");
+
+  // && returns the first falsy value it finds
+  console.log(false && "Some string");
+
+  // Useful for conditionally executing/rendering something
+  console.log(hasMovieAdaptation && "This book has a movie");
+
+  // Falsy values: 0, "", null, undefined, false, NaN
+  console.log("nicolau" && "Some string");
+  console.log(0 && "Some string");
+
+  console.log("======== OR OPERATOR ========");
+
+  // || returns the first truthy value it finds
+  console.log(true || "Some string");
+  console.log(false || "Some string");
+
+  // Using || to provide a fallback value
+  console.log(book.translations.spanish);
+
+  const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+  console.log(spanishTranslation);
+
+  // Problem with ||:
+  // 0 is a valid value, but it is treated as falsy
+  console.log(book.reviews.librarything.reviewsCount);
+
+  const countWrong = book.reviews.librarything.reviewsCount || "NO DATA";
+  console.log(countWrong);
+
+  console.log("======== NULLISH COALESCING OPERATOR ========");
+
+  // ?? only uses the fallback when the value is null or undefined
+  // It keeps valid falsy values like 0 and ""
+  const count = book.reviews.librarything.reviewsCount ?? "NO DATA";
+  console.log(count);
 }
