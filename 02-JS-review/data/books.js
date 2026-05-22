@@ -1,6 +1,6 @@
 // Dataset containing information about books
 
-const data = [
+export const books = [
   {
     id: 1,
     title: "The Lord of the Rings",
@@ -144,66 +144,3 @@ const data = [
     },
   },
 ];
-
-// Function that returns all books
-function getBooks() {
-  return data;
-}
-
-// Function that returns a single book by id
-function getBook(id) {
-  return data.find((d) => d.id === id);
-}
-
-// Get book with id
-const bookId = 1;
-const book = getBook(bookId);
-
-// Object destructuring
-// Extracting properties from the book object
-if (!book) {
-  console.log(`Book ${bookId} not found`);
-} else {
-  const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-    book;
-
-  // Logging book information
-  console.log(`title: ${title} \nauthor: ${author} \nGenres: ${genres}`);
-
-  // Array destructuring
-  // Extracting first and second genres
-
-  const [primaryGenre, secondGenre, ...otherGenres] = genres;
-
-  // Logging extracted genres
-  console.log(
-    `Primary Genre: ${primaryGenre} \nSecond Genre: ${secondGenre} \nOthes Genres: ${otherGenres}`,
-  );
-
-  // New Genres, spread operation
-  const newGenre = ["epic fantasy", ...genres];
-  console.log(`New Genre: ${newGenre}`);
-
-  // immutable updates
-  const updatedBook = {
-    // rest operator (...)
-    ...book,
-    // Adding a new property
-    moviePublicationDate: "2001-12-19",
-
-    // Overwritting an existing property
-    pages: 1210,
-  };
-  console.log("======== New BOOK ======== ");
-  console.log(
-    `Title: ${title} \nPublication Date: ${updatedBook.moviePublicationDate} \nPages: ${updatedBook.pages}`,
-  );
-
-  console.log("======== SUMMARY ======== ");
-  const summary = `${title}, is a ${pages}-page long book, was written by ${author}, and published in ${publicationDate.split("-")[0]}. The book has ${hasMovieAdaptation ? "" : "not "}been adapted as a movie`;
-  console.log(summary);
-
-  // TErnaries Instead of/if/else Statements
-  const pagesRange = pages > 1000 ? "Over a thousand" : "less than 1000";
-  console.log(`The book has ${pagesRange} pages`);
-}
