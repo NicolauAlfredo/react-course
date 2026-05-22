@@ -156,7 +156,7 @@ function getBook(id) {
 }
 
 // Get book with id
-const bookId = 22;
+const bookId = 1;
 const book = getBook(bookId);
 
 // Object destructuring
@@ -168,13 +168,34 @@ if (!book) {
     book;
 
   // Logging book information
-  console.log(`title: ${author} \nauthor: ${title} \nGenres: ${genres}`);
+  console.log(`title: ${title} \nauthor: ${author} \nGenres: ${genres}`);
 
   // Array destructuring
   // Extracting first and second genres
 
-  const [primaryGenre, secondGenre] = genres;
+  const [primaryGenre, secondGenre, ...otherGenres] = genres;
 
   // Logging extracted genres
-  console.log(`Primary Genre: ${primaryGenre} \nSecond Genre ${secondGenre}`);
+  console.log(
+    `Primary Genre: ${primaryGenre} \nSecond Genre: ${secondGenre} \nOthes Genres: ${otherGenres}`,
+  );
+
+  // New Genres, spread operation
+  const newGenre = ["epic fantasy", ...genres];
+  console.log(`New Genre: ${newGenre}`);
+
+  // immutable updates
+  const updatedBook = {
+    // rest operator (...)
+    ...book,
+    // Adding a new property
+    moviePublicationDate: "2001-12-19",
+
+    // Overwritting an existing property
+    pages: 1210,
+  };
+  console.log("======== New BOOK ======== ");
+  console.log(
+    `Title: ${title} \Publication Date: ${updatedBook.moviePublicationDate} \nPages: ${updatedBook.pages}`,
+  );
 }
