@@ -5,6 +5,7 @@ import "./index.css";
 
 const pizzaData = [
   {
+    id: 1,
     name: "Focaccia",
     ingredients: "Bread with italian olive oil and rosemary",
     price: 6,
@@ -12,6 +13,7 @@ const pizzaData = [
     soldOut: false,
   },
   {
+    id: 2,
     name: "Pizza Margherita",
     ingredients: "Tomato and mozarella",
     price: 10,
@@ -19,6 +21,7 @@ const pizzaData = [
     soldOut: false,
   },
   {
+    id: 3,
     name: "Pizza Spinaci",
     ingredients: "Tomato, mozarella, spinach, and ricotta cheese",
     price: 12,
@@ -26,6 +29,7 @@ const pizzaData = [
     soldOut: false,
   },
   {
+    id: 4,
     name: "Pizza Funghi",
     ingredients: "Tomato, mozarella, mushrooms, and onion",
     price: 12,
@@ -33,6 +37,7 @@ const pizzaData = [
     soldOut: false,
   },
   {
+    id: 5,
     name: "Pizza Salamino",
     ingredients: "Tomato, mozarella, and pepperoni",
     price: 15,
@@ -40,6 +45,7 @@ const pizzaData = [
     soldOut: true,
   },
   {
+    id: 6,
     name: "Pizza Prosciutto",
     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
     price: 18,
@@ -72,19 +78,11 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
-      <Pizza
-        name="Pizza Spinaci"
-        ingredients="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={12}
-      />
-
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, mushrooms, and onion"
-        photoName="pizzas/funghi.jpg"
-        price={12}
-      />
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.id} />
+        ))}
+      </ul>
     </main>
   );
 }
@@ -93,14 +91,14 @@ function Pizza(props) {
   console.log(props);
 
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt={props.name} />
+    <li className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{props.price + 3}</span>
+        <h3>{props.pizzaObj.name}</h3>
+        <p>{props.pizzaObj.ingredients}</p>
+        <span>{props.pizzaObj.price + 3}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
