@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { HiXMark, HiBars3 } from "react-icons/hi2";
 
 const messages = [
   "Learn React ⚛️",
@@ -18,13 +19,13 @@ export default function App() {
     if (step < 3) setStep((currentStep) => currentStep + 1);
   }
 
+  function handleToggle() {
+    setIsOpen((currentState) => !currentState);
+  }
   return (
     <>
-      <button
-        className="close"
-        onClick={() => setIsOpen((currentState) => !currentState)}
-      >
-        &times;
+      <button className="close" onClick={handleToggle}>
+        {isOpen ? <HiXMark /> : <HiBars3 />}
       </button>
 
       {isOpen && (
