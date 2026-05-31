@@ -17,6 +17,11 @@ export default function App() {
     setCount((currentCount) => currentCount + step);
   }
 
+  function handleReset() {
+    setStep(1);
+    setCount(0);
+  }
+
   return (
     <div>
       <div className="container">
@@ -55,6 +60,14 @@ export default function App() {
               : `${Math.abs(count)} days ago was `}
 
           {targetDate.toDateString()}
+        </div>
+
+        <div>
+          {(count !== 0 || step !== 1) && (
+            <button className="reset" onClick={handleReset}>
+              Reset
+            </button>
+          )}
         </div>
       </div>
     </div>
