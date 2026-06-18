@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState(() => {
+    const storedItems = localStorage.getItem("items");
+
+    return storedItems ? JSON.parse(storedItems) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   function handleAddItems(item) {
     setItems(items => [...items, item])
