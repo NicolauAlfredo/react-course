@@ -9,6 +9,7 @@ import { initialFriends } from "./data/initialFriends";
 function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [friends, setFriends] = useState(initialFriends);
+  const [selectedFriend, setSelectedFriend] = useState(null);
 
   function handleShowAddFriend() {
     setShowAddFriend((show) => !show);
@@ -19,17 +20,23 @@ function App() {
     setShowAddFriend(false);
   }
 
+  function handleSelection(friend) {
+    setSelectedFriend(friend);
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList friends={friends} />
+        <FriendsList friends={friends} onSelection={handleSelection} />
+
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
+
         <Button onClick={handleShowAddFriend}>
           {showAddFriend ? "Close" : "Add Friend"}
         </Button>
       </div>
 
-      <FormSpliteBill />
+      {selectedFriend && <FormSpliteBill selectedFriend={selectedFriend} />}
     </div>
   );
 }
