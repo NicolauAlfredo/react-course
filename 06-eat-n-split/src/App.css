@@ -59,6 +59,7 @@ select {
     background-color 0.25s ease,
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  margin-top: 1.4rem;
 }
 
 .button:hover {
