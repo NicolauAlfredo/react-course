@@ -1,8 +1,6 @@
-import { initialFriends } from "../data/initialFriends";
 import Friend from "./Friend";
-export default function FriendsList() {
-  const friends = initialFriends;
 
+export default function FriendsList({ friends }) {
   return (
     <div>
       <ul>
