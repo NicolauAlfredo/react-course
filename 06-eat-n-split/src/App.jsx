@@ -21,13 +21,19 @@ function App() {
   }
 
   function handleSelection(friend) {
-    setSelectedFriend(friend);
+    setSelectedFriend((selected) =>
+      selectedFriend?.id === friend.id ? null : friend,
+    );
   }
 
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList friends={friends} onSelection={handleSelection} />
+        <FriendsList
+          friends={friends}
+          selectedFriend={selectedFriend}
+          onSelection={handleSelection}
+        />
 
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
 
