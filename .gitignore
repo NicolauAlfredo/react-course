@@ -40,3 +40,12 @@ vite.svg
 
 # TypeScript
 *.tsbuildinfo
+
+# AI agent skills and local configurations
+
+/.agent/
+/skills/
+/.agents/
+/.claude/
+/.gemini/
+/.codex/
